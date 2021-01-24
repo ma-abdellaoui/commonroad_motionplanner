@@ -15,13 +15,13 @@ SMP/motion_planner/search_algorithms/DisableObstAvoidance.txt
 SMP/motion_planner/search_algorithms/DisableRefPath.txt  
 SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt  
 These files contain a list of scenarios where the motion planner needs to enable/disable certain features such as the speed limiter in corners or the front obstacle avoidance to be able to find a solution  
-- Also follow the instructions of the search repo on how to set up the docker. 
+- Also follow the instructions of the search repo on how to set up the environment. 
 
 
-## Seach Results:
+## Search Results:
 - evaluation on the [2020a Version of Commonroad](https://gitlab.lrz.de/tum-cps/commonroad-scenarios) (2076 scenarios total)
 - evaluation with BMW320i, KS2, SM1 and a [default motion primitves set] (https://gitlab.lrz.de/tum-cps/commonroad-search/-/tree/master/SMP/maneuver_automaton/primitives) ```V_0.0_20.0_Vstep_2.0_SA_-1.066_1.066_SAstep_0.18_T_0.5_Model_BMW_320i```
-- Batch_processing: timelimit set to 100 seconds, 3 Threads (Intel i5, 8gb RAM)
+- Batch_processing: time limit set to 100 seconds, 3 Threads (Intel i5, 8gb RAM)
 
 |Property  |    number of scenarios|
 | ------------- |:-------------:|
@@ -35,30 +35,37 @@ These files contain a list of scenarios where the motion planner needs to enable
 
 ## Summary of the Motion Planner 
 
-For the [USA_US101-21_1_T-1](https://commonroad.in.tum.de/submissions/ranking/KS2:SM1:USA_US101-21_1_T-1:2020a) scanario, we extract the *relevant* part (from start of the ego vehicle to goal) of the reference path. Since the interval of time_steps of arrival is 70-80, it is a good assumption the relevant reference path can  be completed in ~75 steps. Given the closest position towards the reference path and time_step at any giiven time of the ego vehicle, an estimate of the average speed needed and the progess of the reference path that should be achieved at this time_step, can be returned. Also distance and orientation towards the reference path help to guide the low level search. 
+This is a general summary on how the motion planner works. For further details, check out the comments in the source code. 
+There are 4 types of scenarios available. The planner decides which scenarios type is currently loaded and uses a different set of functions depending on the scenario. 
+The motion planner can decide on the type of the scenario depending on the attributes of the desired goal. These can be one of the following:
+['time_step']
+['position', 'time_step']
+['position', 'velocity', 'time_step']
+['position', 'orientation', 'time_step']
+['position', 'velocity', 'orientation', 'time_step']
 
-Extracted part of reference_route from start to finish of the USA_US101-21_1_T-1 Scenario:
-
-![Image of the USA_US101 Planned Route.](/png/USA_US101-21_1_T-1_route.png "USA_US101-21_1_T-1route")
-Now we "only" need to guide the search along the reference path in time and in space. This how the solution looks in Action. 
-
-![USA_US101 GIF](/png/USA_US101-21_1_T-1demo.gif "USA_US101-21_1_T-1demo.gif")
-
-
-(until 18.Jan 2020, 3 out of ~300 users found a solution for this [scenario](https://commonroad.in.tum.de/submissions/ranking/KS2:SM1:USA_US101-21_1_T-1:2020a) )
+After the type of the scenario is decided, the motion planner calls the route_planner class to create a reference path to the goal position. The reference path will work as a guide to the search process. Along the reference path, all motion primitives that end at a point further than a certain distance from the reference path will not be considered. the accelerates and guides the search directly to the goal position. The problem with this strategy is static objects. if there is a non moving objects along the reference path then the motion planner will not be able to avoid it and drive pass it because if it constrained by the maximum allowed distance to the reference path. I will be addressing this problem in the next weeks, the idea is to relax the constraint of the maximum distance, if a static object is detected in-front. 
+As for the heuristic function of the search algorithm, please refer the source code, as everything is nicely separated in functions and commented.
 
 
 ## A selection of some generated solutions:
 
-- green 
+-   **Green circle**: initial state projected onto the position domain
+-   **Red rectangle**: static obstacle
+-   **Blue rectangle**: dynamic obstacle
+-   **green rectangle**: ego vehicle --> the vehicle controlled by the motion planner
+-   **Yellow rectangle**: goal region projected onto the position domain
+
 
 USA_US101-2_1_T-1:
 ![](/solution_gifs/DEU_Flensburg-74_1_T-1-2020a.gif  " DEU_Flensburg-74_1_T-1-2020a.gif")
 
 USA_Lanker-2_10_T-1:
+
 ![](/solution_gifs/DEU_Flensburg-86_1_T-1-2020a.gif  " DEU_Flensburg-86_1_T-1-2020a.gif")
 
 KS2-SM1-ZAM_Zip-1_16_T-1-2020a
+
 ![](/solution_gifs/EU_Flensburg-94_1_T-1-2020a.gif  " EU_Flensburg-94_1_T-1-2020a.gif")
 
 
