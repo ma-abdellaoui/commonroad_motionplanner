@@ -1,18 +1,19 @@
 # commonroad_motionplanner
-A Motion Planner to solver driving scenarios for the [Commonroad] framework (https://commonroad.in.tum.de/)  
+A Motion Planner to solver driving scenarios for the [Commonroad](https://commonroad.in.tum.de/)  framework  
 
-Main Points: 
+Instructions: 
 - this code provides a motion planner as in  [commonroad search repository](https://gitlab.lrz.de/tum-cps/commonroad-search/) 
-- to duplicate the results of the motion planner locally, pull the [commonroad_search repo](https://gitlab.lrz.de/tum-cps/commonroad-search/-/blob/master/SMP/motion_planner/search_algorithms/) and replace the  following files:
-SMP/motion_planner/search_algorithms/best_first_search.py
-SMP/motion_planner/search_algorithms/base_class.py
-SMP/motion_planner/search_algorithms/student.py
-/path/to/your/anaconda3/envs/commonroad-py37/lib/python3.7/site-packages/commonroad/planning/goal.py
+- to duplicate the results of the motion planner locally, pull the [commonroad_search repo](https://gitlab.lrz.de/tum-cps/commonroad-search/) and replace the  following files:
+SMP/motion_planner/search_algorithms/best_first_search.py  
+SMP/motion_planner/search_algorithms/base_class.py  
+SMP/motion_planner/search_algorithms/student.py  
+/path/to/your/anaconda3/envs/commonroad-py37/lib/python3.7/site-packages/commonroad/planning/goal.py  
+
 Furthermore, the following files needs to be added to the /SMP/motion_planner/search_algorithms/ folder: 
 SMP/motion_planner/search_algorithms/DisableObstAvoidance.txt
 SMP/motion_planner/search_algorithms/DisableRefPath.txt
 SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt
-Also follow the instructions of the search repo on how to set up the docker. 
+- Also follow the instructions of the search repo on how to set up the docker. 
 
 
 ## Performance:
