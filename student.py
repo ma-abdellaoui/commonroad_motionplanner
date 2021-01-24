@@ -16,10 +16,6 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
     def __init__(self, scenario, planningProblem, automata, plot_config=DefaultPlotConfig):
         super().__init__(scenario=scenario, planningProblem=planningProblem, automaton=automata,
                          plot_config=plot_config)
-        #self.routeplannerresult = self.create_RoutePlanner_path()
-
-
-
 
     def evaluation_function(self, node_current: PriorityNode) -> float:
         ########################################################################
@@ -46,7 +42,7 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
         """
         Function that evaluates the heuristic cost h(n) in student class.
         Created by Mohamed A. Abdellaoui 10.01.2021
-        @return:
+        
         """
         output_logs = False
         if output_logs:
@@ -59,15 +55,15 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
         currenttimestep = node_current.list_paths[-1][-1].time_step
         currentVel = node_current.list_paths[-1][-1].velocity
 
-        ########################## Test if car infront has velocity 0:
+        # Test if reached goal:
         if self.reached_goal(node_current.list_paths[-1]):
             return 0.0
-
+        # Test if route planner failed to find a path: 
         if self.routeplannerresult is None:
             return np.inf
 
         ############ Detect cars in front:
-        # calc cost based on distance to gool folliwng the refrence path:
+        # calc cost based on distance to gool following the refrence path:
         # loop through all obstacles at time step x and find if any is close of current pos:
         if not self.disableObstAvoidance:
             for obst in self.list_obstacles:
@@ -85,7 +81,11 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
                                 continue
                             if node_current.list_paths[-1][-1].velocity > obstPos.velocity and obstPos.velocity != 0:
                                 return np.inf
+                            
+            # get index of closest object to the ego vehicle:
             index_smallest_dist = self.get_index_nearest_obst_infront(node_current)
+            
+            # use the index to locate vehicle to calc cost: 
             if index_smallest_dist != -1:
                 # found the index of vehicle with smallest distance to ego car:
                 obst = self.list_obstacles[index_smallest_dist]
@@ -110,7 +110,7 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
                 return 0
             return cost
         elif self.planningProblemType == 'ModeB':
-            # Call function for planning problem with desired time and position:
+            # Call function for planning problem with desired time, position and velocity:
             cost = self.cost_for_modeB_problem(node_current, output_logs)
             if output_logs:
                 print("Cost from modeB cost func: ", cost)
@@ -118,7 +118,7 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
                 return 0
             return cost
         elif self.planningProblemType == 'ModeC':
-            # Call function for planning problem with desired time and position:
+            # Call function for planning problem with desired time, position and orientation:
             cost = self.cost_for_modeC_problem(node_current, output_logs)
             if output_logs:
                 print("Cost from modeB cost func: ", cost)
@@ -134,7 +134,7 @@ class StudentMotionPlanner(GreedyBestFirstSearch):
                 return 0
             return cost
         elif self.planningProblemType == 'Survival':
-            # Call function for planning problem with desired time and position:
+            # Call function for planning problem with desired time:
             cost = self.cost_for_Survival_problem(node_current, output_logs)
             if output_logs:
                 print("Cost from modeB cost func: ", cost)
