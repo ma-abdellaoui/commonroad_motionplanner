@@ -50,16 +50,15 @@ Now we "only" need to guide the search along the reference path in time and in s
 
 ## A selection of some generated solutions:
 
-USA_US101-2_1_T-1:
+- green 
 
+USA_US101-2_1_T-1:
 ![](/solution_gifs/DEU_Flensburg-74_1_T-1-2020a.gif  " DEU_Flensburg-74_1_T-1-2020a.gif")
 
 USA_Lanker-2_10_T-1:
-
 ![](/solution_gifs/DEU_Flensburg-86_1_T-1-2020a.gif  " DEU_Flensburg-86_1_T-1-2020a.gif")
 
 KS2-SM1-ZAM_Zip-1_16_T-1-2020a
-
 ![](/solution_gifs/EU_Flensburg-94_1_T-1-2020a.gif  " EU_Flensburg-94_1_T-1-2020a.gif")
 
 
