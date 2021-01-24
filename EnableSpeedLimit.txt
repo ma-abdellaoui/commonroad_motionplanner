@@ -1,0 +1,28 @@
+- ZAM_Tjunction-1_153_T-1
+- ZAM_Tjunction-1_157_T-1
+- ZAM_Tjunction-1_159_T-1
+- ZAM_Tjunction-1_164_T-1
+- ZAM_Tjunction-1_166_T-1
+- ZAM_Tjunction-1_194_T-1
+- ZAM_Tjunction-1_244_T-1
+- ZAM_Tjunction-1_249_T-1
+- ZAM_Tjunction-1_454_T-1
+- ZAM_Tjunction-1_250_T-1
+- ZAM_Tjunction-1_459_T-1
+- ZAM_Tjunction-1_506_T-1
+- ZAM_Tjunction-1_510_T-1
+- ZAM_Tjunction-1_513_T-1
+- ZAM_Tjunction-1_25_T-1
+- ZAM_Tjunction-1_518_T-1
+- ZAM_Tjunction-1_525_T-1
+- ZAM_Tjunction-1_523_T-1
+- DEU_Flensburg-35_1_T-1
+- DEU_Flensburg-8_1_T-1
+- DEU_Flensburg-97_1_T-1
+- DEU_Lohmar-21_1_T-1
+- USA_Lanker-2_12_T-1
+- USA_Lanker-2_4_T-1
+
+- DEU_Lohmar-16_1_T-1
+
+
