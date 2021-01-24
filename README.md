@@ -8,10 +8,12 @@ SMP/motion_planner/search_algorithms/best_first_search.py
 SMP/motion_planner/search_algorithms/base_class.py  
 SMP/motion_planner/search_algorithms/student.py  
 /path/to/your/anaconda3/envs/commonroad-py37/lib/python3.7/site-packages/commonroad/planning/goal.py  
+.  
 Furthermore, the following files needs to be added to the /SMP/motion_planner/search_algorithms/ folder:  
 SMP/motion_planner/search_algorithms/DisableObstAvoidance.txt  
 SMP/motion_planner/search_algorithms/DisableRefPath.txt  
-SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt  
+SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt 
+Theses files contain a list of scenarios where the motion planner needs to enable/disable certain features such as the speed limiter in corners or the front obstacle avoidance  
 - Also follow the instructions of the search repo on how to set up the docker. 
 
 
