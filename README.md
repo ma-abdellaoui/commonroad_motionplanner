@@ -12,22 +12,21 @@ SMP/motion_planner/search_algorithms/student.py
 Furthermore, the following files needs to be added to the /SMP/motion_planner/search_algorithms/ folder:  
 SMP/motion_planner/search_algorithms/DisableObstAvoidance.txt  
 SMP/motion_planner/search_algorithms/DisableRefPath.txt  
-SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt 
-Theses files contain a list of scenarios where the motion planner needs to enable/disable certain features such as the speed limiter in corners or the front obstacle avoidance  
+SMP/motion_planner/search_algorithms/EnableSpeedLimit.txt  
+These files contain a list of scenarios where the motion planner needs to enable/disable certain features such as the speed limiter in corners or the front obstacle avoidance to be able to find a solution  
 - Also follow the instructions of the search repo on how to set up the docker. 
 
 
-## Performance:
-- evaluation on the [2020a Version of Commonroad](https://gitlab.lrz.de/tum-cps/commonroad-scenarios) (2077 scenarios total)
-- evaluation with BMW320i, KS2, SM1 and a [default motion primitves set] (https://gitlab.lrz.de/tum-cps/commonroad-search/-/tree/master/SMP/maneuver_automaton/primitives) ```V_0.0_20.0_Vstep_4.0_SA_-1.066_1.066_SAstep_0.18_T_0.5_Model_BMW_320i```
-- Batch_processing: timelimit set to 30 seconds, 12 Threads (Ryzen 5600x, 32gb RAM)
-- only uses the [Baseline Solution](./student-baseline-michaelf.py). No weights are tuned (set to 1), this is the minimal approach and can easily be improved.
+## Seach Results:
+- evaluation on the [2020a Version of Commonroad](https://gitlab.lrz.de/tum-cps/commonroad-scenarios) (2076 scenarios total)
+- evaluation with BMW320i, KS2, SM1 and a [default motion primitves set] (https://gitlab.lrz.de/tum-cps/commonroad-search/-/tree/master/SMP/maneuver_automaton/primitives) ```V_0.0_20.0_Vstep_2.0_SA_-1.066_1.066_SAstep_0.18_T_0.5_Model_BMW_320i```
+- Batch_processing: timelimit set to 100 seconds, 3 Threads (Intel i5, 8gb RAM)
 
 |Property  |    number of scenarios|
 | ------------- |:-------------:|
 |Total number of scenarios:  	  |      2077|
-|Solution found:               	|      1588|
-|Solution found but invalid:   	|         6|
+|Solution found:               	|      1920|
+|Solution found but invalid:   	|        12|
 |Solution not found:           	|        70|
 |Exception occurred:            |         2|
 |Time out:                     	|       407|
