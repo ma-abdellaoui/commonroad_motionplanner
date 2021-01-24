@@ -1,3 +1,4 @@
+
 # commonroad_motionplanner
 A Motion Planner to solver driving scenarios for the [Commonroad](https://commonroad.in.tum.de/)  framework  
 
@@ -24,15 +25,15 @@ These files contain a list of scenarios where the motion planner needs to enable
 
 |Property  |    number of scenarios|
 | ------------- |:-------------:|
-|Total number of scenarios:  	  |      2077|
-|Solution found:               	|      1920|
+|Total number of scenarios:  	  |      2076|
+|Solution found:               	|      1920(~92.5%)|
 |Solution found but invalid:   	|        12|
-|Solution not found:           	|        70|
+|Solution not found:           	|        60|
 |Exception occurred:            |         2|
-|Time out:                     	|       407|
+|Time out:                     	|        82|
 
 
-## Visualizaton
+## Summary of the Motion Planner 
 
 For the [USA_US101-21_1_T-1](https://commonroad.in.tum.de/submissions/ranking/KS2:SM1:USA_US101-21_1_T-1:2020a) scanario, we extract the *relevant* part (from start of the ego vehicle to goal) of the reference path. Since the interval of time_steps of arrival is 70-80, it is a good assumption the relevant reference path can  be completed in ~75 steps. Given the closest position towards the reference path and time_step at any giiven time of the ego vehicle, an estimate of the average speed needed and the progess of the reference path that should be achieved at this time_step, can be returned. Also distance and orientation towards the reference path help to guide the low level search. 
 
@@ -46,34 +47,22 @@ Now we "only" need to guide the search along the reference path in time and in s
 
 (until 18.Jan 2020, 3 out of ~300 users found a solution for this [scenario](https://commonroad.in.tum.de/submissions/ranking/KS2:SM1:USA_US101-21_1_T-1:2020a) )
 
-## Motion Primitives
 
-If you plan to follow the reference path, you might require a denser set of motion primitives to solve some scenarios.
-There are also effects on changing the duration of the motion primitive on the turning radius, as shown below. 
-
-motion primitive with a duration of 0.5 seconds / 5 steps in commonroad Axes in m/0.5s: (avg. branching factor 9.35)
-![motion_primitves_0_5_second.jpg](/png/motion_primitves_0_5_second.jpg "motion primitive with a duration of 0.5 seconds / 5 steps in commonroad Axes in m/0.5s")
-motion primitive with a duration of 1 second / 10 steps in commonroad. Axes in m/1s: (avg. branching factor 23.20)
-![motion_primitves_1_second.jpg](/png/motion_primitves_1_second.jpg "motion primitive with a duration of 1 second / 10 steps in commonroad. Axes in m/1s")
-
-## A couple of generated solutions:
+## A selection of some generated solutions:
 
 USA_US101-2_1_T-1:
 
-![](/png/USA_US101-2_1_T-1.gif  " USA_US101-2_1_T-1.gif")
+![](/solution_gifs/DEU_Flensburg-74_1_T-1-2020a.gif  " DEU_Flensburg-74_1_T-1-2020a.gif")
 
 USA_Lanker-2_10_T-1:
 
-![](/png/USA_Lanker-2_10_T-1.gif  " USA_Lanker-2_10_T-1.gif")
+![](/solution_gifs/DEU_Flensburg-86_1_T-1-2020a.gif  " DEU_Flensburg-86_1_T-1-2020a.gif")
 
 KS2-SM1-ZAM_Zip-1_16_T-1-2020a
 
-![](/png/KS2-SM1-ZAM_Zip-1_16_T-1-2020a.gif  " KS2-SM1-ZAM_Zip-1_16_T-1-2020a.gif")
+![](/solution_gifs/EU_Flensburg-94_1_T-1-2020a.gif  " EU_Flensburg-94_1_T-1-2020a.gif")
 
-## Answers to Infrequently asked questions (IAQ):
 
-- For ideas, please feel free to contact me or create an issue. (contact details on my [github.io](https://michaelfeil.github.io) )
-- Obviously no weights are tuned in this blueprint 
-- no szenarios types are distinguished. 
-(e.g. in a scenario without goal, a reference path that shows a way to the goal is not as helpful as with goal)
-- if makes sense to use a different (or even multiple sequentially) motion primitive sets. I have uploaded some under [./motion_primitives](https://github.com/michaelfeil/commonroad_motionplaner_michaelf/tree/main/motion_primitives)
+
+##
+- For collaborations, ideas or questions please feel free to contact me or create an issue. (contact me on my [github](https://github.com/ma-abdellaoui) )
