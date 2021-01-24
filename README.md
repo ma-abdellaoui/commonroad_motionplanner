@@ -57,15 +57,19 @@ As for the heuristic function of the search algorithm, please refer the source c
 -   **Yellow rectangle**: goal region projected onto the position domain
 
 DEU_Flensburg-86_1_T-1-2020a:
+
 ![](/solution_gifs/DEU_Flensburg-86_1_T-1-2020a.gif  " DEU_Flensburg-86_1_T-1-2020a.gif")
 
 DEU_Flensburg-74_1_T-1-2020a:
+
 ![](/solution_gifs/DEU_Flensburg-74_1_T-1-2020a.gif  " DEU_Flensburg-74_1_T-1-2020a.gif")
 
 EU_Flensburg-94_1_T-1-2020a:
+
 ![](/solution_gifs/EU_Flensburg-94_1_T-1-2020a.gif  " EU_Flensburg-94_1_T-1-2020a.gif")
 
 ZAM_Zip-1_43_T-1-2020a:
+
 ![](/solution_gifs/ZAM_Zip-1_43_T-1-2020a.gif  " ZAM_Zip-1_43_T-1-2020a.gif")
 
 
