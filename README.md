@@ -45,7 +45,7 @@ The motion planner can decide on the type of the scenario depending on the attri
 ['position', 'velocity', 'orientation', 'time_step']  
 
 After the type of the scenario is decided, the motion planner calls the route_planner class to create a reference path to the goal position. The reference path will work as a guide to the search process. Along the reference path, all motion primitives that end at a point further than a certain distance from the reference path will not be considered. the accelerates and guides the search directly to the goal position. The problem with this strategy is static objects. if there is a non moving objects along the reference path then the motion planner will not be able to avoid it and drive pass it because if it constrained by the maximum allowed distance to the reference path. I will be addressing this problem in the next weeks, the idea is to relax the constraint of the maximum distance, if a static object is detected in-front. 
-As for the heuristic function of the search algorithm, please refer the source code, as everything is nicely separated in functions and commented.
+As for the heuristic function of the search algorithm, please refer the source code, as everything is nicely separated in functions and commented. This text is work in progress
 
 
 ## A selection of some generated solutions:
